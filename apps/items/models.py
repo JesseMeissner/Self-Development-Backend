@@ -8,7 +8,7 @@ class Item (models.Model):
         db_table = 'item'
 
     name = models.CharField(
-        'item', blank=False, max_length=30, db_index=True
+        'Name', blank=False, max_length=30, db_index=True, null=False, default='item'
     )
 
     price = models.IntegerField(
@@ -22,13 +22,13 @@ class Item (models.Model):
     likes = models.IntegerField(
         'likes', blank=False, null=False, default=0
     )
-    
+
     created_at = models.DateTimeField(
         'created at', blank=True, null=True, auto_now_add=True
     )
 
     updated_at = models.DateTimeField(
-        'updated at', blank=True, null=True, auto_now_add=True
+        'updated at', blank=True, null=True, auto_now=True
     )
 
     
