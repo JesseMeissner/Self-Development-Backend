@@ -1,14 +1,18 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-
+from apps.categories.models import Categories
 
 # Create your models here.
 class Item (models.Model):
     class Meta(object):
         db_table = 'item'
 
+    category = models.ForeignKey(
+        Categories, on_delete=models.CASCADE, db_index=True , related_name='item_category', blank=True, null=True
+    )
+
     name = models.CharField(
-        'Name', blank=False, max_length=30, db_index=True, null=False, default='item'
+        'name', blank=False, max_length=30, db_index=True, null=False, default='item'
     )
 
     price = models.IntegerField(

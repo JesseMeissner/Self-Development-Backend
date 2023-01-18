@@ -22,3 +22,6 @@ class Reviews(models.Model):
     review = models.CharField(
         blank=False, null=False, max_length=250
     )
+
+    def __str__(self):
+        return self.name
