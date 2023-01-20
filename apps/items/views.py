@@ -9,3 +9,9 @@ from .serializers import ItemSerializer
 class ItemsList(generics.ListAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    lookup_field = 'id'
+
+class Item(generics.ListAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    lookup_field = 'id'

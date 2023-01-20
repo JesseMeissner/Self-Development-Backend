@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, mixins
+from rest_framework.response import Response
+from rest_framework.generics import UpdateAPIView
 from rest_framework.views import APIView
 from .serializers import CartSerializer
 from .models import Carts
@@ -8,13 +10,10 @@ from .models import Carts
 class CartsView(mixins.ListModelMixin , mixins.CreateModelMixin, mixins.UpdateModelMixin , generics.GenericAPIView):
     queryset = Carts.objects.all()
     serializer_class = CartSerializer
-    lookup_field = 'id'
+    lookup_field = 'item_id'
 
     def get(self,request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
-
-    def put(self,request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
 
 class CartsCreate(generics.CreateAPIView):
     queryset = Carts.objects.all()
@@ -22,3 +21,16 @@ class CartsCreate(generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+
+class CartsUpdate(UpdateAPIView):
+    queryset = Carts.objects.all()
+    serializer_class = CartSerializer
+    lookup_field = 'item_id'
+
+    def update(self, request, *args, **kwargs):
+        cart = self.get_object()
+        cart.quantity += 1
+        cart.save()
+        serializer = CartSerializer(cart)
+        return Response(serializer.data)
