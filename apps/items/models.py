@@ -23,10 +23,6 @@ class Item (models.Model):
         'image', blank=True, null=True #for now
     )
 
-    likes = models.IntegerField(
-        'likes', blank=False, null=False, default=0
-    )
-
     created_at = models.DateTimeField(
         'created at', blank=True, null=True, auto_now_add=True
     )
