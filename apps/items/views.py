@@ -11,7 +11,7 @@ class ItemsList(generics.ListAPIView):
     serializer_class = ItemSerializer
     lookup_field = 'id'
 
-class Item(generics.ListAPIView):
+class Item(generics.RetrieveAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     lookup_field = 'id'
