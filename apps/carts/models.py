@@ -8,7 +8,7 @@ class Carts(models.Model):
         db_table = 'carts'
 
     item = models.ForeignKey(
-        Item, on_delete=models.CASCADE, db_index=True , related_name='item_name_carts', blank=True, null=True
+        Item, on_delete=models.CASCADE, db_index=True , related_name='item_name_carts'
     )
 
     quantity = models.IntegerField(

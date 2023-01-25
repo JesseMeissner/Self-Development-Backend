@@ -23,7 +23,9 @@ class CartsCreate(generics.CreateAPIView):
     serializer_class = CartSerializer
 
     def post(self, request, *args, **kwargs):
+        print(request.data)
         return self.create(request, *args, **kwargs)
+        
 
 
 
