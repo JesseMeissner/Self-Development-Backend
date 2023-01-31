@@ -30,9 +30,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
-CORS_ALLOW_ALL_ORIGINS = False
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/', 'http://0.0.0:3000', 'https://self-development-backend.jessemeissner1.repl.co']
+CORS_ALLOW_ALL_ORIGINS = True
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://0.0.0:3000', 
+    'https://self-development-frontend.jessemeissner1.repl.co'
+]
 # Application definition
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://0.0.0:3000', 
+    'https://self-development-frontend.jessemeissner1.repl.co'
+]
 
 INSTALLED_APPS = [
     # To allow CORS (Cross-origin resource sharing)
